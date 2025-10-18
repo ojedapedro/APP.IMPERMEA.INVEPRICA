@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Informe de Inspección - Impermeabilización</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Informe de Inspección — Impermeabilización</h1>
+      <p class="muted">Rápido · Moderno · Descargable en PDF</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Datos del Cliente</h2>
+        <div class="grid">
+          <label>Cédula / RIF <input id="cedula" /></label>
+          <label>Nombre <input id="nombre" /></label>
+          <label>Apellido <input id="apellido" /></label>
+          <label>Teléfono <input id="telefono" /></label>
+          <label class="full">Dirección <input id="direccion" /></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Desglose del Presupuesto</h2>
+        <div id="partidas">
+          <div class="partida">
+            <h3>Materiales</h3>
+            <div class="part-list" data-type="materiales"></div>
+            <button class="btn small" data-add="materiales">+ Añadir material</button>
+          </div>
+          <div class="partida">
+            <h3>Equipos</h3>
+            <div class="part-list" data-type="equipos"></div>
+            <button class="btn small" data-add="equipos">+ Añadir equipo</button>
+          </div>
+          <div class="partida">
+            <h3>Mano de obra</h3>
+            <div class="part-list" data-type="mano_obra"></div>
+            <button class="btn small" data-add="mano_obra">+ Añadir mano de obra</button>
+          </div>
+        </div>
+
+        <div class="calc">
+          <label>IVA % <input id="iva_percent" type="number" value="0" /></label>
+          <div class="totals">
+            <div>Subtotal materiales: <span id="sub_materiales">0</span></div>
+            <div>Subtotal equipos: <span id="sub_equipos">0</span></div>
+            <div>Subtotal mano de obra: <span id="sub_mano">0</span></div>
+            <div>IVA: <span id="iva_total">0</span></div>
+            <div class="big">Total: <strong id="total_general">0</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Fotos de la inspección</h2>
+        <input id="fotos_input" type="file" multiple accept="image/*" />
+        <div id="preview" class="preview-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Observaciones</h2>
+        <textarea id="observaciones" rows="4"></textarea>
+      </section>
+
+      <div class="actions">
+        <button id="guardar" class="btn primary">Guardar en Google Sheets</button>
+        <button id="generarPdf" class="btn">Generar PDF y Descargar</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <small>Hecho para empresa de impermeabilización • Exportable a PDF</small>
+    </footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
